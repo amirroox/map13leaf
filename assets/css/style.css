@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+#map {
+    height: 100%;
+}
+#inp {
+    position: absolute;
+    top: 6%;
+    right: 3%;
+    z-index: 999;
+    font-size: 23px;
+    padding: 12px;
+    border: 1px solid gray;
+    text-align: center;
+    background-color: #1e0000;
+    color: white;
+}
+a[href="https://leafletjs.com"] , a[href="https://leafletjs.com"] + span {
+    display: none;
+}

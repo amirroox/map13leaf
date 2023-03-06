@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: IRANSans, sans-serif;
 }
 body {
     height: 100vh;
@@ -15,7 +16,7 @@ body {
     top: 6%;
     right: 3%;
     z-index: 999;
-    font-size: 23px;
+    font-size: 17px;
     padding: 12px;
     border: 1px solid gray;
     text-align: center;
@@ -25,3 +26,97 @@ body {
 a[href="https://leafletjs.com"] , a[href="https://leafletjs.com"] + span {
     display: none;
 }
+
+/* Modal - Add Location */
+div.modal-overlay {
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+div.modal {
+    width: 40%;
+    background: #fff;
+    padding: 20px 20px 0;
+    border-radius: 13px;
+    position: relative;
+}
+@media screen and (max-width: 920px ) {
+    div.modal {
+        width: 90%;
+    }
+}
+span.close-modal {
+    position: absolute;
+    top: 29px;
+    right: 35px;
+    font-size: 26px;
+    color: red;
+    cursor: pointer;
+    transition: all .5s;
+}
+span.close-modal:hover {
+    color: black;
+    scale: 180%;
+}
+
+div.field-row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 25px 0;
+}
+
+.field-row div.field-title {
+    width: 30%;
+}
+
+.field-row div.field-content {
+    width: 70%;
+}
+
+input#NameOfPlace , #type_loc {
+    width: 60%;
+    text-align: center;
+}
+button#Sub_loc{
+    width: 95% ;
+    font-size: 16px;
+    padding: 7px 0;
+    cursor: pointer;
+    background-color: #96ff33;
+    border: none;
+    transition: all .5s;
+}
+button#Sub_loc:hover {
+    background-color: #33ff44;
+    border-radius: 20px;
+}
+#lat , #lng {
+    border: none;
+    background-color: unset;
+    color: unset;
+    width: 20%;
+    outline: none;
+}
+
+/* Style For select Menu */
+.select_opt select::-webkit-scrollbar {
+    width: 10px;
+}
+.select_opt select::-webkit-scrollbar-track {
+    background: #8e8e8e;
+}
+.select_opt select::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+.select_opt select::-webkit-scrollbar-thumb:hover {
+    background: #202020;
+}
+

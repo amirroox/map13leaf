@@ -1,6 +1,8 @@
 <?php
 
-function dieecho($msg): void
+use JetBrains\PhpStorm\NoReturn;
+
+#[NoReturn] function dieecho($msg): void
 {
     echo "<div style='padding: 13px;
             display: inline-block;
@@ -19,28 +21,29 @@ function dieecho($msg): void
     die();
 }
 
-function massage_error($msg): void
+#[NoReturn] function massage_error($msg): void
 {
-    echo "<div style='padding: 13px 0 13px 20px;
+    echo "<div style='padding: 13px;
     display: inline-block;
     color: black;
-    border-left: 5px solid purple; 
+    border-left: 5px solid #d00202; 
     background-color: #fba8d2;
     border-radius: 20px;
-    font-size: 20px;
-    width: 50%;
+    font-size: 17px;
+    width: 100%;
     '>$msg</div>";
+    die();
 }
 function massage_success($msg): void
 {
-    echo "<div style='padding: 13px 0 13px 20px;
+    echo "<div style='padding: 13px;
     display: inline-block;
     color: black;
-    border-left: 5px solid purple; 
-    background-color: #fba8d2;
+    border-left: 5px solid #048f48; 
+    background-color: #a9fba8;
     border-radius: 20px;
-    font-size: 20px;
-    width: 50%;
+    font-size: 17px;
+    width: 100%;
     '>$msg</div>";
 }
 function isAjax() :bool {

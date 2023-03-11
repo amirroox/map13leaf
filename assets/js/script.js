@@ -28,6 +28,7 @@ map.on('dblclick' , function(event) {
     $('#lng').val(event.latlng.lng);
     $('#NameOfPlace').val('');
     $('#type_loc').val(0);
+    $('#ajax-result').html('');
     add_location.on('submit',function (){
         $.ajax({
             method : 'post' ,
@@ -35,13 +36,14 @@ map.on('dblclick' , function(event) {
             data : add_location.serialize(),
             success : function (e) {
                 $('#ajax-result').html(e);
-                if(e.includes("added")) {
+                if(e.includes("class='okmsg'")) {
                     L.marker([event.latlng.lat,event.latlng.lng] , {icon : myIcon}).addTo(map);
+                    modal.delay(300).fadeOut(1200);
                 }
+                // location.reload();
             }
         });
     });
-
 })
 close_modal.on('click' , function (){
    modal.fadeOut(600);

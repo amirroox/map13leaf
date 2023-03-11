@@ -17,3 +17,27 @@ function login($email , $pass) :bool{
     }
     return false;
 }
+function fetch_place(): false|array
+{
+    global $db_connection;
+    $query = "SELECT * FROM locations";
+    $stmt = $db_connection->query($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+function delete_place($id): int
+{
+    global $db_connection;
+    $query = 'DELETE from locations where id = ?';
+    $stmt = $db_connection->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->rowCount();
+}
+function change_status($id): int
+{
+    global $db_connection;
+    $query = 'UPDATE locations SET status = (1 - status) where id = ?';
+    $stmt = $db_connection->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->rowCount();
+}

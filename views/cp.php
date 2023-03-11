@@ -32,6 +32,10 @@
             background-color: #12c312;
             color: white;
         }
+        .disabled {
+            background-color: #c31212;
+            color: white;
+        }
         .exit {
             float: right;
         }
@@ -63,6 +67,29 @@
         table.list_loc tbody tr:nth-child(even) {
             background-color: #ededed;
         }
+        i {
+            background-color: #45ba6a;
+            padding: 3px 7px;
+            font-size: 13px;
+            border-radius: 8px;
+            font-style: normal;
+            color: white;
+            /*float: right;*/
+        }
+        td.nameOfPlace {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        a#Delete_ID {
+            font-size: 30px;
+            cursor: pointer;
+            padding: unset;
+            background-color: unset;
+        }
+        a#Delete_ID:hover {
+            color: #030dca;
+        }
     </style>
 </head>
 <body>
@@ -85,59 +112,28 @@
             </tr>
         </thead>
         <tbody>
+        <?php foreach ($location_list as $key => $value) : ?>
             <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
+                <td class="nameOfPlace">
+                    <a id="Delete_ID" href="?del_id=<?=$value['id']?>">🗑</a>
+                        <?= $value['title'] ?>
+                        <i style="background-color: <?=locationColor[$value['type']]?>">
+                            <?= locationTypes[$value['type']] ?>
+                        </i>
+                </td>
+                <td><?= $value['created_at'] ?></td>
+                <td><?= $value['lat'] ?></td>
+                <td><?= $value['lng'] ?></td>
+                <td><a class="<?= $value['status']==0 ? 'disabled' : 'enable' ?>"
+                       href="?status=<?= $value['id'] ?>"></a>
+                </td>
             </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>
 </body>
+<script src="<?=BASE_URL?>assets/vendor/jquery.min.js"></script>
 <script>
     if ( window.history.replaceState ) {  /* Prevent confirm form resubmission */
         window.history.replaceState( null, null, window.location.href );

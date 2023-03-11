@@ -36,7 +36,41 @@ $location = [
 
 ];
 sort($location);
-$location[30]= 'Public' ;
-$location[31] = 'Other ...';
+$location[29]= 'Public' ;
+$location[30] = 'Other ...';
 define("locationTypes", $location);
 
+const locationColor = [
+    0 => '#7E3517' ,
+    1 => 'red' ,
+    2 => 'blue' ,
+    3 => 'Tomato' ,
+    4 => 'Orange' ,
+    5 => 'DodgerBlue' ,
+    6 => 'MediumSeaGreen' ,
+    7 => 'Gray' ,
+    8 => 'SlateBlue' ,
+    9 => 'Violet' ,
+    10 => 'Cyan' ,
+    11 => 'Purple' ,
+    12 => 'Lime' ,
+    13 => 'green' ,
+    14 => 'Magenta' ,
+    15 => 'Aquamarine' ,
+    16 => 'Olive' ,
+    17 => 'Maroon' ,
+    18 => 'Brown' ,
+    19 => 'Yellow' ,
+    20 => '#4B0150' ,
+    21 => '#7575CF' ,
+    22 => '#614051' ,
+    23 => '#FF00FF' ,
+    24 => '#E30B5D' ,
+    25 => '#FFB6C1' ,
+    26 => '#7F5A58' ,
+    27 => '#872657' ,
+    28 => '#FF4500' ,
+    29 => '#8A4117' ,
+    30 => '#8B8000' ,
+
+];

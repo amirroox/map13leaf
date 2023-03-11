@@ -49,7 +49,7 @@ function massage_error_no_echo($msg) :string
 }
 function massage_success($msg): void
 {
-    echo "<div style='padding: 13px;
+    echo "<div class='okmsg' style='padding: 13px;
     display: inline-block;
     color: black;
     border-left: 5px solid #048f48; 

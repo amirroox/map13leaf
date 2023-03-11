@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="<?=BASE_URL?>/assets/css/style.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/assets/vendor/leaflet/leaflet.css">
-    <script src="<?=BASE_URL?>/assets/vendor/leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="<?=BASE_URL?>assets/css/style.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>assets/vendor/leaflet/leaflet.css">
+    <script src="<?=BASE_URL?>assets/vendor/leaflet/leaflet.js"></script>
     <title>Maps 13</title>
 </head>
 <body>
@@ -62,8 +62,8 @@
         </div>
     </div>
     <div class="container" id="map"></div>
-    <script src="<?=BASE_URL?>/assets/vendor/jquery.min.js"></script>
-    <script src="<?=BASE_URL?>/assets/js/script.js"></script>
+    <script src="<?=BASE_URL?>assets/vendor/jquery.min.js"></script>
+    <script src="<?=BASE_URL?>assets/js/script.js"></script>
 
 </body>
 </html>

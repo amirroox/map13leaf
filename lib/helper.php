@@ -21,9 +21,10 @@ use JetBrains\PhpStorm\NoReturn;
     die();
 }
 
-#[NoReturn] function massage_error($msg): void
+function massage_error($msg): void
 {
     echo "<div style='padding: 13px;
+    margin: 10px 0;
     display: inline-block;
     color: black;
     border-left: 5px solid #d00202; 
@@ -32,7 +33,19 @@ use JetBrains\PhpStorm\NoReturn;
     font-size: 17px;
     width: 100%;
     '>$msg</div>";
-    die();
+}
+function massage_error_no_echo($msg) :string
+{
+    return "<div style='padding: 13px;
+    margin: 10px 0;
+    display: inline-block;
+    color: black;
+    border-left: 5px solid #d00202; 
+    background-color: #fba8d2;
+    border-radius: 20px;
+    font-size: 17px;
+    width: 100%;
+    '>$msg</div>";
 }
 function massage_success($msg): void
 {

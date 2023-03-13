@@ -28,18 +28,10 @@
             background-color: white;
             border-radius: 7px;
         }
-        .enable {
-            background-color: #12c312;
-            color: white;
-        }
-        .disabled {
-            background-color: #c31212;
-            color: white;
-        }
         .exit {
             float: right;
         }
-        a {
+        div.menu a , div.list a {
             padding: 8px 18px;
             border-radius: 15px;
             border: none;
@@ -48,6 +40,14 @@
             font-size: 14px;
             color: unset;
             text-decoration: none;
+        }
+        .enable {
+            background-color: #12c312 !important;
+            color: white;
+        }
+        .disabled {
+            background-color: #c31212 !important;
+            color: white;
         }
         table.list_loc {
             width: 100%;
@@ -90,18 +90,42 @@
         a#Delete_ID:hover {
             color: #030dca;
         }
+        #preview {
+            width: 80vw;
+            height: 70vh;
+            /*background-color: #8e8e8e;*/
+            overflow: hidden;
+            position: absolute;
+            display: none;
+            border: 2px solid black;
+            border-radius: 12px;
+        }
+        span.close_preview {
+            z-index: 999;
+            background-color: black;
+            position: absolute;
+            padding: 13px;
+            font-size: 24px;
+            right: 13px;
+            top: 10px;
+            border-radius: 50%;
+            color: wheat;
+            cursor: pointer;
+        }
     </style>
+    <link rel="stylesheet" href="<?=BASE_URL?>assets/vendor/leaflet/leaflet.css">
+    <script src="<?=BASE_URL?>assets/vendor/leaflet/leaflet.js"></script>
 </head>
 <body>
-<h1>Admin Panel Maps</h1>
-<div class="menu">
+    <h1>Admin Panel Maps</h1>
+    <div class="menu">
 <a class="home" href="<?=BASE_URL?>"> &#127968; </a>
 <a class="enable" href="?status=1">enable</a>
 <a class="disabled" href="?status=0">disabled</a>
 <a href="?status=-1">ALL</a>
 <a class="exit" href="?logout=1">&#128682; Exit</a>
 </div>
-<div class="list">
+    <div class="list">
     <table class="list_loc">
         <thead>
             <tr>
@@ -116,13 +140,16 @@
         <?php foreach ($location_list as $key => $value) : ?>
             <tr>
                 <td class="nameOfPlace">
-                    <a id="Delete_ID" href="?del_id=<?=$value['id']?>">🗑</a>
-                        <?= $value['title'] ?>
-                        <i style="background-color: <?=locationColor[$value['type']]?>">
-                            <?= locationTypes[$value['type']] ?>
-                        </i>
+                    <span>
+                        <a id="Delete_ID" onclick="open_preview(<?= $value['lat'] ?>,<?= $value['lng'] ?>,'<?= $value['title'] ?>')">👁</a>
+                        <a id="Delete_ID" href="?del_id=<?=$value['id']?>">🗑</a>
+                    </span>
+                    <?= $value['title'] ?>
+                    <i style="background-color: <?=locationColor[$value['type']]?>">
+                        <?= locationTypes[$value['type']] ?>
+                    </i>
                 </td>
-                <td><?= $value['created_at'] ?></td>
+                <td><?= date('Y-m-d H:i',strtotime($value['created_at'])) ?></td>
                 <td><?= $value['lat'] ?></td>
                 <td><?= $value['lng'] ?></td>
                 <td><a class="<?= $value['status']==0 ? 'disabled' : 'enable' ?>"
@@ -133,11 +160,28 @@
         </tbody>
     </table>
 </div>
+    <div id="preview"><span class="close_preview">X</span></div>
 </body>
 <script src="<?=BASE_URL?>assets/vendor/jquery.min.js"></script>
 <script>
     if ( window.history.replaceState ) {  /* Prevent confirm form resubmission */
         window.history.replaceState( null, null, window.location.href );
     }
+    let preview = $('#preview');
+    function open_preview(lat , lng , title='name') {
+        preview.fadeIn(1000);
+        preview.css('display','unset');
+        let map_preview = L.map('preview').setView([lat, lng], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom:2 ,
+            maxZoom: 19,
+            attribution: '<a href="https://www.ro-ox.com/" target="_blank">ro-ox</a>' ,
+            noWrap:true
+        }).addTo(map_preview);
+        L.marker([lat, lng]).addTo(map_preview).bindPopup(title).openPopup();
+    }
+    $('span.close_preview').on('click',function (){
+        preview.fadeOut('700');
+    })
 </script>
 </html>

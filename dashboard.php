@@ -17,9 +17,12 @@ else {
         delete_place($_GET['del_id']);
         header('Location:'.BASE_URL.'dashboard.php');
     }
-    if(isset($_GET['status']) and is_numeric($_GET['status'])) {
-        change_status($_GET['status']);
+    if(isset($_GET['chg_status']) and is_numeric($_GET['chg_status'])) {
+        change_status($_GET['chg_status']);
         header('Location:'.BASE_URL.'dashboard.php');
+    }
+    if(isset($_GET['status']) and is_numeric($_GET['status'])) {
+        $location_list = list_status($_GET['status']);
     }
     include_once "views/cp.php";
 }

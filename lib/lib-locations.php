@@ -16,3 +16,12 @@ function addToMap($array): int
         return 0 ; //not Added
     }
 }
+
+function active_place(): false|array
+{
+    global $db_connection ;
+    $query = 'SELECT * FROM locations where status = 1';
+    $stmt = $db_connection->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

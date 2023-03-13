@@ -98,6 +98,7 @@
 <a class="home" href="<?=BASE_URL?>"> &#127968; </a>
 <a class="enable" href="?status=1">enable</a>
 <a class="disabled" href="?status=0">disabled</a>
+<a href="?status=-1">ALL</a>
 <a class="exit" href="?logout=1">&#128682; Exit</a>
 </div>
 <div class="list">
@@ -125,7 +126,7 @@
                 <td><?= $value['lat'] ?></td>
                 <td><?= $value['lng'] ?></td>
                 <td><a class="<?= $value['status']==0 ? 'disabled' : 'enable' ?>"
-                       href="?status=<?= $value['id'] ?>"></a>
+                       href="?chg_status=<?= $value['id'] ?>"></a>
                 </td>
             </tr>
         <?php endforeach; ?>

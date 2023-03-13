@@ -41,3 +41,18 @@ function change_status($id): int
     $stmt->execute([$id]);
     return $stmt->rowCount();
 }
+function list_status($status = -1): false|array
+{   // status ( 1 and 0 ) || null
+    global $db_connection;
+    if($status != -1) {
+        $query = "Select * FROM locations where status = :status" ;
+        $stmt = $db_connection->prepare($query);
+        $stmt->execute([':status' => $status]);
+    }
+    else {
+        $query = "Select * FROM locations" ;
+        $stmt = $db_connection->prepare($query);
+        $stmt->execute();
+    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

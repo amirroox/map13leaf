@@ -64,6 +64,10 @@
     <div class="container" id="map"></div>
     <script src="<?=BASE_URL?>assets/vendor/jquery.min.js"></script>
     <script src="<?=BASE_URL?>assets/js/script.js"></script>
-
+    <script>
+        <?php foreach ($active_place as $key => $value) : ?>
+        L.marker([<?=$value['lat']?>,<?=$value['lng']?>]).addTo(map).bindPopup('<?=$value['title']?>').openPopup();
+        <?php endforeach; ?>
+    </script>
 </body>
 </html>

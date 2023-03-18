@@ -119,4 +119,7 @@ button#Sub_loc:hover {
 .select_opt select::-webkit-scrollbar-thumb:hover {
     background: #202020;
 }
+.leaflet-popup-content {
+    text-align: center;
+}
 

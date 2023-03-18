@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="<?=BASE_URL?>assets/vendor/leaflet/leaflet.css">
     <script src="<?=BASE_URL?>assets/vendor/leaflet/leaflet.js"></script>
     <title>Maps 13</title>
-    <style>
-        .Type_loc {
-            padding: 0 5px;
-            border-radius: 6px;
-            text-align: center;
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <form action="">
@@ -75,7 +67,7 @@
     <script>
         <?php foreach ($active_place as $key => $value) : ?>
         L.marker([<?=$value['lat']?>,<?=$value['lng']?>]).addTo(map)
-            .bindPopup("<?=$value['title']?> <br><br> <span class='Type_loc' style='background-color:<?=locationColor[$value['type']]?>'><?=locationTypes[$value['type']]?></span>");
+            .bindPopup("<?=$value['title']?> <br><br> <span style='background-color:<?=locationColor[$value['type']]?>;padding: 0 5px; border-radius: 6px; text-align: center; color: white;'><?=locationTypes[$value['type']]?></span>");
         <?php endforeach; ?>
     </script>
 </body>

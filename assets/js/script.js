@@ -1,5 +1,5 @@
 /* Show Map Of Leaflet */
-let DefaultArea = [37.239361, 49.619655];
+let DefaultArea = [35.7447193,51.3749284];
 let map = L.map('map').setView(DefaultArea, 10);
 map.doubleClickZoom.disable();
 

@@ -81,13 +81,13 @@
             align-items: center;
             justify-content: space-between;
         }
-        a#Delete_ID {
+        a#Delete_ID , a#Preview {
             font-size: 30px;
             cursor: pointer;
             padding: unset;
             background-color: unset;
         }
-        a#Delete_ID:hover {
+        a#Delete_ID:hover , a#Preview:hover {
             color: #030dca;
         }
         #preview {
@@ -99,6 +99,8 @@
             display: none;
             border: 2px solid black;
             border-radius: 12px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         span.close_preview {
             z-index: 999;
@@ -141,7 +143,7 @@
             <tr>
                 <td class="nameOfPlace">
                     <span>
-                        <a id="Delete_ID" onclick="open_preview(<?= $value['lat'] ?>,<?= $value['lng'] ?>,'<?= $value['title'] ?>')">👁</a>
+                        <a id="Preview" onclick="open_preview(<?= $value['lat'] ?>,<?= $value['lng'] ?>,'<?= $value['title'] ?>')">👁</a>
                         <a id="Delete_ID" href="?del_id=<?=$value['id']?>">🗑</a>
                     </span>
                     <?= $value['title'] ?>
@@ -168,10 +170,11 @@
         window.history.replaceState( null, null, window.location.href );
     }
     let preview = $('#preview');
+    let map_preview ;
     function open_preview(lat , lng , title='name') {
         preview.fadeIn(1000);
         preview.css('display','unset');
-        let map_preview = L.map('preview').setView([lat, lng], 13);
+        map_preview = L.map('preview').setView([lat, lng], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             minZoom:2 ,
             maxZoom: 19,
@@ -181,7 +184,8 @@
         L.marker([lat, lng]).addTo(map_preview).bindPopup(title).openPopup();
     }
     $('span.close_preview').on('click',function (){
-        preview.fadeOut('700');
+        preview.fadeOut(700);
+        map_preview.remove();
     })
 </script>
 </html>

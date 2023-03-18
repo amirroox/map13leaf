@@ -21,9 +21,10 @@ else if(($data['lat'] < -90) || ($data['lat'] > 90)) {
 else if(($data['lng'] < -180) || ($data['lng'] > 180)) {
     massage_error('Please enter the correct longitude');
 }
-else if(!addToMap($data)) {
-    massage_error('Please choose another name for the place');
+else if(addToMap($data)) {
+    massage_success('The location has been added to the map and is being checked');
+    die();
 }
 else {
-    massage_success('The location has been added to the map and is being checked');
+    massage_error('Please choose another name for the place');
 }

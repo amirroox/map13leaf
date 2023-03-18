@@ -4,7 +4,7 @@ let map = L.map('map').setView(DefaultArea, 10);
 map.doubleClickZoom.disable();
 
 L.tileLayer('https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=e862672e57d34d5bb0e800bd6198c0b2', {
-    minZoom:2 ,
+    minZoom:4 ,
     maxZoom: 19,
     attribution: '<a href="https://www.ro-ox.com/" target="_blank">ro-ox</a>' ,
     noWrap:true
@@ -27,7 +27,7 @@ map.on('dblclick' , function(event) {
     $('#lat').val(event.latlng.lat);
     $('#lng').val(event.latlng.lng);
     $('#NameOfPlace').val('');
-    $('#type_loc').val(0);
+    $('#type_loc').val(29); //public Category
     $('#ajax-result').html('');
     add_location.on('submit',function (){
         $.ajax({
@@ -36,7 +36,7 @@ map.on('dblclick' , function(event) {
             data : add_location.serialize(),
             success : function (e) {
                 $('#ajax-result').html(e);
-                if(e.includes("class='okmsg'")) {
+                if(e.includes("been added")) {
                     L.marker([event.latlng.lat,event.latlng.lng] , {icon : myIcon}).addTo(map);
                     modal.delay(300).fadeOut(1200);
                 }
@@ -48,4 +48,33 @@ map.on('dblclick' , function(event) {
 close_modal.on('click' , function (){
    modal.fadeOut(600);
 });
+
+/* Script Of Current Location */
+$('.img_current').on('click',function () {
+    map.locate({setView: true , maxZoom: 13})
+})
+
+/* Send Ajax For Search Box (Search Result) */
+$('#inp').on('keyup' , function () {
+    // console.log(event.originalEvent.key);
+    if ($(this).val().length > 1) {
+        $.ajax({
+            url:'../../process/Search.php' ,
+            method : 'post' ,
+            data : { keyup : $(this).val() },
+            success : function (e) {
+                // alert(e);
+                $('#result_search').html(e);
+            }
+        });
+    }
+    else {
+        $('#result_search').html('');
+    }
+})
+
+/* Function For Search Box Go to Place */
+function go_to_place(lat , lng) {
+    map.setView([lat,lng] , 11);
+}
 

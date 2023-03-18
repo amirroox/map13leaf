@@ -11,10 +11,18 @@
     <title>Maps 13</title>
 </head>
 <body>
-    <form action="">
+    <form action="" id="search_box">
         <label>
-            <input type="text" id="inp" placeholder="Where are you looking for?">
+            <input type="text" id="inp" placeholder="Where are you looking for?" autocomplete="off">
         </label>
+        <div id="result_search" style="">
+            <!-- Template Search Box (START) -->
+<!--            <div>-->
+<!--                <span class="text_search">hello</span>-->
+<!--                <span class="category_search">airport</span>-->
+<!--            </div>-->
+            <!-- Template Search Box (END) -->
+        </div>
     </form>
     <div class="modal-overlay" style="display: none">
         <div class="modal">
@@ -62,6 +70,7 @@
         </div>
     </div>
     <div class="container" id="map"></div>
+    <img src="<?=BASE_URL?>assets/img/currentloc.png" alt="Current Location" class="img_current">
     <script src="<?=BASE_URL?>assets/vendor/jquery.min.js"></script>
     <script src="<?=BASE_URL?>assets/js/script.js"></script>
     <script>

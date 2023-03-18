@@ -22,6 +22,7 @@ else {
         header('Location:'.BASE_URL.'dashboard.php');
     }
     if(isset($_GET['status']) and is_numeric($_GET['status'])) {
+        if($_GET['status'] < 0 ) header('Location:'.BASE_URL.'dashboard.php');
         $location_list = list_status($_GET['status']);
     }
     include_once "views/cp.php";

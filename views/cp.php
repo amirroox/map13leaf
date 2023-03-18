@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: IRANSans, sans-serif;
         }
         body {
             overflow-x: hidden;
@@ -70,10 +71,12 @@
         i {
             background-color: #45ba6a;
             padding: 3px 7px;
+            text-align: center;
             font-size: 13px;
             border-radius: 8px;
             font-style: normal;
             color: white;
+            width: 190px;
             /*float: right;*/
         }
         td.nameOfPlace {
@@ -144,7 +147,10 @@
                 <td class="nameOfPlace">
                     <span>
                         <a id="Preview" onclick="open_preview(<?= $value['lat'] ?>,<?= $value['lng'] ?>,'<?= $value['title'] ?>')">👁</a>
-                        <a id="Delete_ID" href="?del_id=<?=$value['id']?>">🗑</a>
+                        <a id="Delete_ID" href="?del_id=<?=$value['id']?>"
+                           onclick="return confirm('Are You Sure ?')">
+                            🗑
+                        </a>
                     </span>
                     <?= $value['title'] ?>
                     <i style="background-color: <?=locationColor[$value['type']]?>">
@@ -154,7 +160,7 @@
                 <td><?= date('Y-m-d H:i',strtotime($value['created_at'])) ?></td>
                 <td><?= $value['lat'] ?></td>
                 <td><?= $value['lng'] ?></td>
-                <td><a class="<?= $value['status']==0 ? 'disabled' : 'enable' ?>"
+                <td><a id="toggle_status" class="<?= $value['status']==0 ? 'disabled' : 'enable' ?>"
                        href="?chg_status=<?= $value['id'] ?>"></a>
                 </td>
             </tr>

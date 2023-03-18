@@ -8,14 +8,23 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
+/* Style Of Map Main */
 #map {
     height: 100%;
 }
-#inp {
+a[href="https://leafletjs.com"] , a[href="https://leafletjs.com"] + span {
+    display: none;
+}
+
+/* Style Of Search Box and Result  */
+#search_box {
     position: absolute;
     top: 6%;
     right: 3%;
     z-index: 999;
+}
+#inp {
     font-size: 17px;
     padding: 12px;
     border: 1px solid gray;
@@ -23,8 +32,21 @@ body {
     background-color: #1e0000;
     color: white;
 }
-a[href="https://leafletjs.com"] , a[href="https://leafletjs.com"] + span {
-    display: none;
+#result_search div {
+    background-color: #3e0000;
+    border-radius:15px;
+    color: white;
+    padding: 12px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    cursor:zoom-in ;
+}
+#result_search :first-child {
+    border-radius: 0 0 15px 15px;
+}
+#result_search span.category_search {
+    padding: 0 7px;
 }
 
 /* Modal - Add Location */
@@ -121,5 +143,16 @@ button#Sub_loc:hover {
 }
 .leaflet-popup-content {
     text-align: center;
+}
+.img_current {
+    position: absolute;
+    z-index: 9999;
+    bottom: 20px;
+    width: 60px;
+    left: 10px;
+    cursor: pointer;
+    background-color: wheat;
+    padding: 7px;
+    border-radius: 50%;
 }
 

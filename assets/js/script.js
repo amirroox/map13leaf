@@ -3,7 +3,10 @@ let DefaultArea = [35.7447193,51.3749284];
 let map = L.map('map').setView(DefaultArea, 10);
 map.doubleClickZoom.disable();
 
-L.tileLayer('https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=e862672e57d34d5bb0e800bd6198c0b2', {
+// https://tile.openstreetmap.org/{z}/{x}/{y}.png
+// https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=?
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom:4 ,
     maxZoom: 19,
     attribution: '<a href="https://www.ro-ox.com/" target="_blank">ro-ox</a>' ,

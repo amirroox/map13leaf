@@ -25,6 +25,7 @@ In general, this script is an open source map for registering places and searchi
 
 ### How to use the script :
 + Upload all files to your server or host
++ Import map13.sql into your database
 + From the bootstrap/config.php path, specify the connection settings to the database and admins (to access the management panel)
 + Change the const BASE_URL from the bootstrap/constant.php path with the path of your server (domain or localhost)
 + Open the index.php file. Go to the Domain/dashboard.php path to access the admin page (email : amirroox@yahoo.com   , password : amirroox)
